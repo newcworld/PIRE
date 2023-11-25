@@ -15,9 +15,12 @@ from torch.autograd import Variable
 import numpy as np
 
 import torchvision.transforms as transforms
-from torch.autograd.gradcheck import zero_gradients
 from torch.nn.parameter import Parameter
 import random
+
+def zero_gradients(i):
+    for t in iter_gradients(i):
+        t.zero_()
 
 def init_network(params):
 

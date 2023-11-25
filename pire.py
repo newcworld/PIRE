@@ -11,11 +11,14 @@ import torchvision
 import torch.nn.functional as F
 import torch.optim as optim
 import torch.nn as nn
-from torch.autograd.gradcheck import zero_gradients
 from torch.nn.parameter import Parameter
 
 
 from tqdm import tqdm
+
+def zero_gradients(i):
+    for t in iter_gradients(i):
+        t.zero_()
 
 normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 loader = transforms.Compose([transforms.ToTensor(), normalize])
